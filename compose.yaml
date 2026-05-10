@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mini-bitly-postgres
+    environment:
+      POSTGRES_DB: minibitly
+      POSTGRES_USER: minibitly
+      POSTGRES_PASSWORD: minibitly
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: mini-bitly-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres-data:
